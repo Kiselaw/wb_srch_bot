@@ -32,7 +32,9 @@ def parse(vendor_code: str, product_name: str) -> list[tuple[str, int]]:
                 break
         if place is not None:
             page = parse_qs(url)['page'][0]
-            result.append((page, place))
+            # Вообще нумерация элементов с 0, но так лучше восприятие
+            # для пользователя взаимодействующего с ботом.
+            result.append((page, place + 1))
         return
 
     async def tasks_creator() -> None:
