@@ -59,6 +59,5 @@ def parse(vendor_code: str, product_name: str) -> list[tuple[str, int]]:
                 task = asyncio.create_task(get_data(session, url))
                 tasks.append(task)
             await asyncio.gather(*tasks)
-    asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
     asyncio.run(tasks_creator())
     return result
